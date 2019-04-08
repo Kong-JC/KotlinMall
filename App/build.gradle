@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion target_compile_sdk_version
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_compile_sdk_version
+        versionCode version_code
+        versionName "$version_name"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':Provider')
+    implementation project(':MessageCenter')
+    if (isUserModule.toBoolean()) implementation project(':GoodsCenter')
+    if (isUserModule.toBoolean()) implementation project(':UserCenter')
+}
+repositories {
+    mavenCentral()
+}
