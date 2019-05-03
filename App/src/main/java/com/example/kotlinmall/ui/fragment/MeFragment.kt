@@ -6,9 +6,13 @@ import com.example.baselibrary.ext.onClick
 import com.example.baselibrary.ui.fragment.BaseFragment
 import com.example.kotlinmall.R
 import com.example.kotlinmall.ui.activity.SettingActivity
+import com.example.order.ui.activity.OrderActivity
+import com.example.order.ui.activity.ShipAddressActivity
 import com.example.usercenter.ui.activity.LoginActivity
 import com.example.usercenter.ui.activity.UserInfoActivity
 import com.kotlin.base.utils.AppPrefsUtils
+import com.kotlin.order.common.OrderConstant
+import com.kotlin.order.common.OrderStatus
 import com.kotlin.provider.common.ProviderConstant
 import com.kotlin.provider.common.afterLogin
 import com.kotlin.provider.common.isLogined
@@ -39,9 +43,7 @@ class MeFragment : BaseFragment(), View.OnClickListener {
         loadData()
     }
 
-    /*
-        加载初始数据
-     */
+    // 加载初始数据
     private fun loadData() {
         if (isLogined()) {
             val userIcon = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON)
@@ -54,9 +56,7 @@ class MeFragment : BaseFragment(), View.OnClickListener {
 
     }
 
-    /*
-        点击事件
-     */
+    // 点击事件
     override fun onClick(view: View) {
         when (view.id) {
             R.id.mUserIconIv, R.id.mUserNameTv -> {
@@ -65,24 +65,19 @@ class MeFragment : BaseFragment(), View.OnClickListener {
             }
 
             R.id.mWaitPayOrderTv -> {
-//                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_PAY)
+                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_PAY)
             }
             R.id.mWaitConfirmOrderTv -> {
-//                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_CONFIRM)
+                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_CONFIRM)
             }
             R.id.mCompleteOrderTv -> {
-//                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_COMPLETED)
+                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_COMPLETED)
             }
             R.id.mAllOrderTv -> {
-                afterLogin {
-                    //                    startActivity<OrderActivity>()
-                }
+                afterLogin { startActivity<OrderActivity>() }
             }
-
             R.id.mAddressTv -> {
-                afterLogin {
-                    //                    startActivity<ShipAddressActivity>()
-                }
+                afterLogin { startActivity<ShipAddressActivity>() }
             }
             R.id.mShareTv -> {
 //                toast(R.string.coming_soon_tip)

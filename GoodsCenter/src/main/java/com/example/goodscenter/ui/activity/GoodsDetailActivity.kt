@@ -1,5 +1,6 @@
 package com.example.goodscenter.ui.activity
 
+import android.util.Log
 import android.view.Gravity
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
@@ -40,11 +41,8 @@ class GoodsDetailActivity : BaseActivity() {
         mCartBdage = QBadgeView(this)
 
         initObserve()
-        loadCartSize()
+        setCartBadge() // 加载购物车数量
     }
-
-    // 加载购物车数量
-    private fun loadCartSize() = setCartBadge()
 
     // 监听购物车数量变化
     private fun initObserve() {
@@ -59,6 +57,7 @@ class GoodsDetailActivity : BaseActivity() {
         mCartBdage.setGravityOffset(22f, -2f, true)
         mCartBdage.setBadgeTextSize(6f, true)
         mCartBdage.bindTarget(mEnterCartTv).badgeNumber = AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE)
+        Log.d("GoodsDetailActivity", " -=-=-=-=-=- initObserve badgeNumber:${AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE)}")
     }
 
     // Bus取消监听

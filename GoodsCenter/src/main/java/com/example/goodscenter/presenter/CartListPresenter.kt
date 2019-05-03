@@ -1,6 +1,6 @@
 package com.kotlin.goodscenter.presenter
 
-import com.example.baselibrary.ext.execute
+import com.example.baselibrary.ext.excute
 import com.example.baselibrary.presenter.BasePresenter
 import com.example.baselibrary.rx.BaseSubscriber
 import com.example.goodscenter.service.CartService
@@ -18,7 +18,7 @@ class CartListPresenter @Inject constructor() : BasePresenter<CartListView>() {
     fun getCartList() {
         if (!checkNetWork()) return
         mView.showLoading()
-        cartService.getCartList().execute(object : BaseSubscriber<MutableList<CartGoods>?>(mView) {
+        cartService.getCartList().excute(object : BaseSubscriber<MutableList<CartGoods>?>(mView) {
             override fun onNext(t: MutableList<CartGoods>?) {
                 mView.onGetCartListResult(t)
             }
@@ -29,7 +29,7 @@ class CartListPresenter @Inject constructor() : BasePresenter<CartListView>() {
     fun deleteCartList(list: List<Int>) {
         if (!checkNetWork()) return
         mView.showLoading()
-        cartService.deleteCartList(list).execute(object : BaseSubscriber<Boolean>(mView) {
+        cartService.deleteCartList(list).excute(object : BaseSubscriber<Boolean>(mView) {
             override fun onNext(t: Boolean) {
                 mView.onDeleteCartListResult(t)
             }
@@ -40,7 +40,7 @@ class CartListPresenter @Inject constructor() : BasePresenter<CartListView>() {
     fun submitCart(list: MutableList<CartGoods>, totalPrice: Long) {
         if (!checkNetWork()) return
         mView.showLoading()
-        cartService.submitCart(list, totalPrice).execute(object : BaseSubscriber<Int>(mView) {
+        cartService.submitCart(list, totalPrice).excute(object : BaseSubscriber<Int>(mView) {
             override fun onNext(t: Int) {
                 mView.onSubmitCartListResult(t)
             }

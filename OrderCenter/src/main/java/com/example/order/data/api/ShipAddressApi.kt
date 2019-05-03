@@ -9,7 +9,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import rx.Observable
 
-
 // 地址管理 接口
 interface ShipAddressApi {
 

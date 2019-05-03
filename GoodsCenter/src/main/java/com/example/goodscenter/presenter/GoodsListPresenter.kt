@@ -1,6 +1,6 @@
 package com.example.goodscenter.presenter
 
-import com.example.baselibrary.ext.execute
+import com.example.baselibrary.ext.excute
 import com.example.baselibrary.presenter.BasePresenter
 import com.example.baselibrary.rx.BaseSubscriber
 import com.example.goodscenter.presenter.view.GoodsListView
@@ -16,7 +16,7 @@ class GoodsListPresenter @Inject constructor() : BasePresenter<GoodsListView>() 
     fun getGoodsList(categoryId: Int, pageNo: Int) {
         if (!checkNetWork()) return
         mView.showLoading()
-        goodsService.getGoodsList(categoryId,pageNo).execute(object : BaseSubscriber<MutableList<Goods>?>(mView) {
+        goodsService.getGoodsList(categoryId,pageNo).excute(object : BaseSubscriber<MutableList<Goods>?>(mView) {
             override fun onNext(t: MutableList<Goods>?) {
                 mView.onGoodsListResult(t)
             }
@@ -26,7 +26,7 @@ class GoodsListPresenter @Inject constructor() : BasePresenter<GoodsListView>() 
     fun getGoodsListByKeyword(keyword: String, pageNo: Int) {
         if (!checkNetWork()) return
         mView.showLoading()
-        goodsService.getGoodsListByKeyword(keyword,pageNo).execute(object : BaseSubscriber<MutableList<Goods>?>(mView) {
+        goodsService.getGoodsListByKeyword(keyword,pageNo).excute(object : BaseSubscriber<MutableList<Goods>?>(mView) {
             override fun onNext(t: MutableList<Goods>?) {
 //                mView.onGoodsListByKeyword(t)
                 mView.onGoodsListResult(t)
@@ -37,7 +37,7 @@ class GoodsListPresenter @Inject constructor() : BasePresenter<GoodsListView>() 
     fun getGoodsDetail(goodsId: Int) {
         if (!checkNetWork()) return
         mView.showLoading()
-        goodsService.getGoodsDetail(goodsId).execute(object : BaseSubscriber<Goods>(mView) {
+        goodsService.getGoodsDetail(goodsId).excute(object : BaseSubscriber<Goods>(mView) {
             override fun onNext(t: Goods) {
 //                mView.onGoodsDetail(t)
             }

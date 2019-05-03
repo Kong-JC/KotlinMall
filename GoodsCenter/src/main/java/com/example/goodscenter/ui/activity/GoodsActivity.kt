@@ -27,7 +27,7 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView/*, BG
     override fun setView(): Int = R.layout.activity_goods
 
     override fun initView() {
-        super.initView()
+        // super.initView()
         mGoodsAdapter = GoodsAdapter(this)
         mGoodsRv.layoutManager = GridLayoutManager(this, 2)
         mGoodsRv.adapter = mGoodsAdapter

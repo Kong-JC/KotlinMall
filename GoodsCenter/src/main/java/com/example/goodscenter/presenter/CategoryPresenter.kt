@@ -1,6 +1,6 @@
 package com.example.goodscenter.presenter
 
-import com.example.baselibrary.ext.execute
+import com.example.baselibrary.ext.excute
 import com.example.baselibrary.presenter.BasePresenter
 import com.example.baselibrary.rx.BaseSubscriber
 import com.example.goodscenter.data.protocol.Category
@@ -16,7 +16,7 @@ class CategoryPresenter @Inject constructor() : BasePresenter<CategoryView>() {
     fun getCategory(parentId: Int) {
         if (!checkNetWork()) return
         mView.showLoading()
-        categoryService.getCategory(parentId).execute(object : BaseSubscriber<MutableList<Category>?>(mView) {
+        categoryService.getCategory(parentId).excute(object : BaseSubscriber<MutableList<Category>?>(mView) {
             override fun onNext(t: MutableList<Category>?) {
                 mView.onCategoryResult(t)
             }

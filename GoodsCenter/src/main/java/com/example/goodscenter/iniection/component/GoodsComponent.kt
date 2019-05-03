@@ -9,7 +9,7 @@ import com.kotlin.goodscenter.ui.fragment.GoodsDetailTabOneFragment
 import dagger.Component
 
 @PresenterComponentScope
-@Component(dependencies = [ActivityComponent::class],modules = [GoodsModule::class,CartModule::class])
+@Component(dependencies = [ActivityComponent::class], modules = [GoodsModule::class, CartModule::class])
 interface GoodsComponent {
     fun inject(activity: GoodsActivity)
     fun inject(fragment: GoodsDetailTabOneFragment)

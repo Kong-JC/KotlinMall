@@ -1,6 +1,5 @@
 package com.kotlin.goodscenter.ui.fragment
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
@@ -162,10 +161,10 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
 
     // 提交购物车回调
     override fun onSubmitCartListResult(result: Int) {
-        Log.d("CartFragment"," -=-=- packageName: ${activity!!.packageName}")
         ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM)
                 .withInt(ProviderConstant.KEY_ORDER_ID, result)
                 .navigation()
+//        ARouter.getInstance().build(RouterPath.UserCenter.PATH_LOGIN).navigation()
     }
 
     // 设置Back是否可见

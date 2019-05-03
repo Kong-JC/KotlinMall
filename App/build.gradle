@@ -24,6 +24,7 @@ dependencies {
     implementation project(':MessageCenter')
     if (isUserModule.toBoolean()) implementation project(':GoodsCenter')
     if (isUserModule.toBoolean()) implementation project(':UserCenter')
+    implementation project(':OrderCenter')
 }
 repositories {
     mavenCentral()

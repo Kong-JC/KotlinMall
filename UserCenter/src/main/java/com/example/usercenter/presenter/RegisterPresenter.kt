@@ -1,6 +1,6 @@
 package com.example.usercenter.presenter
 
-import com.example.baselibrary.ext.execute
+import com.example.baselibrary.ext.excute
 import com.example.baselibrary.presenter.BasePresenter
 import com.example.baselibrary.rx.BaseSubscriber
 import com.example.usercenter.presenter.view.RegisterView
@@ -15,7 +15,7 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
     fun register(mobile: String, pwd: String, verifyCode: String) {
         if (!checkNetWork()) return
         mView.showLoading()
-        userService.register(mobile, pwd, verifyCode).execute(object : BaseSubscriber<Boolean>(mView) {
+        userService.register(mobile, pwd, verifyCode).excute(object : BaseSubscriber<Boolean>(mView) {
             override fun onNext(t: Boolean) {
                 if (t) mView.onRegisterResult("注册成功")
             }

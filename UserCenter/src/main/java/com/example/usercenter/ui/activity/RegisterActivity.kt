@@ -24,7 +24,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
 
     // 初始化视图
     override fun initView() {
-        super.initView()
+        // super.initView()
         mRegisterBtn.enabled(arrayOf(mMobileEt, mVerifyCodeEt, mPwdEt, mPwdConfirmEt))
         mVerifyCodeBtn.onClick(this)
         mRegisterBtn.onClick(this)

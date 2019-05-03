@@ -1,5 +1,7 @@
 package com.example.baselibrary.ui.activity
 
+import android.os.Bundle
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.baselibrary.common.BaseApplication
 import com.example.baselibrary.injection.component.ActivityComponent
 import com.example.baselibrary.injection.component.DaggerActivityComponent
@@ -20,10 +22,12 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
 
     private lateinit var mLoadingDialog: ProgressLoading
 
-    override fun initView() {
+    override fun onCreate(savedInstanceState: Bundle?) {
         initActivityInjection()
         injectComponent()
         mLoadingDialog = ProgressLoading.create(this)
+        ARouter.getInstance().inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     abstract fun injectComponent()

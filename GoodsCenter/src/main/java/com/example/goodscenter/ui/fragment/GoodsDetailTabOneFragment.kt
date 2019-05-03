@@ -1,5 +1,7 @@
 package com.kotlin.goodscenter.ui.fragment
 
+//import com.youth.banner.BannerConfig
+//import com.youth.banner.Transformer
 import android.view.Gravity
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
@@ -13,6 +15,7 @@ import com.example.goodscenter.R
 import com.example.goodscenter.iniection.component.DaggerGoodsComponent
 import com.example.goodscenter.iniection.module.GoodsModule
 import com.example.goodscenter.ui.activity.GoodsDetailActivity
+import com.kotlin.base.utils.AppPrefsUtils
 import com.kotlin.base.utils.YuanFenConverter
 import com.kotlin.goodscenter.common.GoodsConstant
 import com.kotlin.goodscenter.data.protocol.Goods
@@ -41,7 +44,7 @@ class GoodsDetailTabOneFragment : BaseMvpFragment<GoodsDetailPresenter>(), Goods
     //SKU弹层退场动画
     private lateinit var mAnimationEnd: Animation
 
-    private var mCurGoods:Goods? = null
+    private var mCurGoods: Goods? = null
 
     // 初始化视图
     override fun initView() {
@@ -54,8 +57,7 @@ class GoodsDetailTabOneFragment : BaseMvpFragment<GoodsDetailPresenter>(), Goods
         //sku弹层
         mSkuView.onClick {
             mSkuPop.showAtLocation((activity as GoodsDetailActivity).contentView,
-                    Gravity.BOTTOM and Gravity.CENTER_HORIZONTAL, 0, 0
-            )
+                    Gravity.BOTTOM and Gravity.CENTER_HORIZONTAL, 0, 0)
             (activity as BaseActivity).contentView!!.startAnimation(mAnimationStart)
         }
 
@@ -149,14 +151,14 @@ class GoodsDetailTabOneFragment : BaseMvpFragment<GoodsDetailPresenter>(), Goods
                     it.goodsDefaultIcon,
                     it.goodsDefaultPrice,
                     mSkuPop.getSelectCount(),
-                    mSkuPop.getSelectSku()
-                    )
+                    mSkuPop.getSelectSku())
         }
     }
 
     // 加入购物车 回调
     override fun onAddCartResult(result: Int) {
 //        toast("Cart - $result")
+        AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, result)
         Bus.send(UpdateCartSizeEvent())
     }
 

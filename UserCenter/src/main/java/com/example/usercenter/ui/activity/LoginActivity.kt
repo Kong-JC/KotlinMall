@@ -27,7 +27,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
 
     // 初始化视图
     override fun initView() {
-        super.initView()
+        // super.initView()
         mLoginBtn.enabled(arrayOf(mMobileEt, mPwdEt))
         mLoginBtn.onClick(this)
         mHeaderBar.getRightView().onClick(this)

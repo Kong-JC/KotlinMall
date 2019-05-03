@@ -21,7 +21,7 @@ class ForgetPwdActivity : BaseMvpActivity<ForgetPwdPresenter>(), ForgetPwdView, 
 
     // 初始化视图
     override fun initView() {
-        super.initView()
+        // super.initView()
         mNextBtn.onClick(this)
         mVerifyCodeBtn.onClick(this)
         mNextBtn.enabled(arrayOf(mMobileEt, mVerifyCodeEt))

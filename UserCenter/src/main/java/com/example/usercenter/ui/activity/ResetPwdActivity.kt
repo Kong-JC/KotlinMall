@@ -24,7 +24,7 @@ class ResetPwdActivity : BaseMvpActivity<ResetPwdPresenter>(), ResetPwdView {
 
     // 初始化视图
     override fun initView() {
-        super.initView()
+        // super.initView()
         mConfirmBtn.onClick {
             if (mPwdEt.text.toString() == mPwdConfirmEt.text.toString())
                 mPresenter.resetPwd(intent.getStringExtra("mobile"), mPwdConfirmEt.text.toString())

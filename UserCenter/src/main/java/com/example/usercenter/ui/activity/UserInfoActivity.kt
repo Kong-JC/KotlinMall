@@ -60,7 +60,7 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView,
 
     // 初始化视图
     override fun initView() {
-        super.initView()
+        // super.initView()
         initData()
         mUserIconIv.onClick { showAlertView() }
         mHeaderBar.getRightView().onClick {
